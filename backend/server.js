@@ -5,7 +5,7 @@ import connectDb from "./config/db.js";
 
 import authroutes from "./routes/authRoute.js";
 import projectRoutes from "./routes/projectRoute.js";
-import skillroutes from "./routes/skillRoute.js";
+import skillRoutes from "./routes/skillRoute.js";
 import router from "./routes/messageRoute.js";
 
 dotenv.config();
@@ -27,7 +27,7 @@ const app = express();
  app.use("/api/auth",authroutes)
  app.use("/api/projects",projectRoutes);
  app.use("/api/messages",router);
- app.use("/api/skill",skillroutes);
+ app.use("/api/skills",skillRoutes);
 
  //error handler
 

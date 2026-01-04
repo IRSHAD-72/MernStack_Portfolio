@@ -1,34 +1,29 @@
 import Skill from "../Models/Skill.js";
 
-//create 
-
-export const createSkill = async(req,res)=>{
+export const createSkill = async (req, res) => {
+  try {
     const skill = await Skill.create(req.body);
-    res.status(201).json
+    res.status(201).json(skill);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
-// read 
-export const getSkill = async(req,res)=>{
-    const skills = await Skill.find();
-    res.json(skills);
+export const getSkill = async (req, res) => {
+  const skills = await Skill.find();
+  res.json(skills);
 };
 
-// update
-
-export const updateSkill = async(req,res)=>{
-    const skill= await Skill.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-    {new:true}
-    );
-    res.json(skill);
+export const updateSkill = async (req, res) => {
+  const skill = await Skill.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+  res.json(skill);
 };
 
-//delete
-
- export const deleteSkill = async (req,res)=>{
-    const skill = await Skill.findByIdAndDelete(
-        req.params.id
-    );
-    res.json({message:"Skill deleted"})
- };
+export const deleteSkill = async (req, res) => {
+  await Skill.findByIdAndDelete(req.params.id);
+  res.json({ message: "Skill deleted" });
+};

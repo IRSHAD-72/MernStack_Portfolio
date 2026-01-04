@@ -3,11 +3,11 @@ import { createSkill,getSkill,updateSkill,deleteSkill } from "../controller/skil
 
 import protect from "../middleware/authMiddleware.js";
 
-const skillroutes = express.Router();
+const skillRoutes = express.Router();
 
-skillroutes.get("/",getSkill);
-skillroutes.post("/",protect,createSkill);
-skillroutes.put("/:id",updateSkill);
-skillroutes.delete("/:id",deleteSkill);
+skillRoutes.get("/",getSkill);
+skillRoutes.post("/",protect,createSkill);
+skillRoutes.put("/:id",protect,updateSkill);
+skillRoutes.delete("/:id",protect,deleteSkill);
 
-export default skillroutes;
+export default skillRoutes;
